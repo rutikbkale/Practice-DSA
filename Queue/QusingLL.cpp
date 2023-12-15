@@ -1,64 +1,77 @@
 // WAP for queue using linkedlist.
 
-#include<iostream>
+#include <iostream>
 using namespace std;
 
-struct Node{
+struct Node
+{
     int data;
     Node *next;
 
-    Node(int data){
-        this->data=data;
+    Node(int data)
+    {
+        this->data = data;
         next = NULL;
     }
 };
 
-class Queue{
-    public :
-        Node *front, *rear;
+class Queue
+{
+public:
+    Node *front, *rear;
 
-        Queue(Node *head){
-            front=rear=head;
+    Queue(Node *head)
+    {
+        front = rear = head;
+    }
+
+    void enQueue(int val)
+    {
+        Node *newNode = new Node(val);
+        if (!front)
+        {
+            front = rear = newNode;
         }
-
-        void enQueue(int val){
-            Node *newNode = new Node(val);
-            if(!front){
-                front=rear=newNode;
-            }
-            else{
-                rear->next=newNode;
-                rear=newNode;
-            }
+        else
+        {
+            rear->next = newNode;
+            rear = newNode;
         }
+    }
 
-        void deQueue(){
-            if(!front || !rear){
-                cout<<"Queue is empty.\n";
-            }
-            else{
-                Node *temp = front;
-                cout<<"Poped Element : "<<temp->data<<endl;
-                front=temp->next;
-                delete temp;
-            }
+    void deQueue()
+    {
+        if (!front || !rear)
+        {
+            cout << "Queue is empty.\n";
         }
-
-        void displayQueue(){
-            if(!front || !rear){
-                cout<<"Queue is empty.\n";
-            }
-            else{
-                Node *temp = front;
-                cout<<"Queue Element : ";
-                while(temp != NULL){
-                    cout<<temp->data<<" ";
-                    temp=temp->next;
-                }
-                cout<<endl;
-            }
+        else
+        {
+            Node *temp = front;
+            cout << "Poped Element : " << temp->data << endl;
+            front = temp->next;
+            delete temp;
         }
+    }
 
+    void displayQueue()
+    {
+        if (!front || !rear)
+        {
+            cout << "Queue is empty.\n";
+        }
+        else
+        {
+            Node *temp = front;
+            cout << "Queue Element : ";
+            while (temp != NULL)
+            {
+                cout << temp->data << " ";
+                temp = temp->next;
+            }
+            cout << endl;
+        }
+    }
 };
 
 int main(int argc, char const *argv[])
