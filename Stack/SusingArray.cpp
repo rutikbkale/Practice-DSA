@@ -46,6 +46,16 @@ class Stack{
             cout<<endl;
         }
     }
+
+    void peek(){
+        if(top ==-1){
+            cout<<"Stack is empty.\n";
+        }
+        else{
+            cout<<"Peek of the stack is  : "<<arr[top];
+            cout<<endl;
+        }
+    }
 };
 
 int main(int argc, char const *argv[])
@@ -53,12 +63,15 @@ int main(int argc, char const *argv[])
     int size = 10;
     Stack *s = new Stack(size);
     s->push(5);
+    s->peek();
     s->push(51);
     s->push(54);
     s->push(53);
     s->push(50);
+    s->peek();
     s->displayStack();
     s->pop();
+    s->peek();
     s->displayStack();
     return 0;
 }

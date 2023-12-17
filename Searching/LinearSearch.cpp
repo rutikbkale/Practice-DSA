@@ -20,17 +20,29 @@ public:
         }
         return -1;
     }
+
+    void array(int *arr){
+        cout<<"Array Elements : ";
+        for(int i=0; i<size; i++){
+            cout<<arr[i]<<" ";
+        }
+        cout<<endl;
+    }
 };
 
 int main(int argc, char const *argv[]) {
-    int size = 7;
+    int size = 7,ch;
     int arr[] = {34, 56, 87, 45, 90, 21, 16};
     Searching *s = new Searching(size);
-    int i = s->linearS(45, arr);
+    s->array(arr);
+    cout<<"Enter element to be search : ";
+    cin>>ch;
+    int i = s->linearS(ch, arr);
     if (i >= 0) {
         cout << "Element found at index: " << i;
     } else {
         cout << "Element not found.";
     }
+    delete s;
     return 0;
 }

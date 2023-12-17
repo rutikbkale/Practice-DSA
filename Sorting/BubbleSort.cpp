@@ -50,13 +50,14 @@ public:
 int main(int argc, char const *argv[])
 {
     int size = 10;
-    int arr[] = {54,76,34,56,87,9,12,31,45,29};
-    //int arr[] = {1, 2, 3, 4, 5,6, 7, 8, 9, 10};
+    //int arr[] = {54,76,34,56,87,9,12,31,45,29};
+    int arr[] = {1, 2, 3, 4, 5,6, 7, 8, 9, 10};
     Sorting *obj = new Sorting(size);
     cout<<"Before sorting : \n";
     obj->displayArr(arr);
     obj->bubbleSort(arr);
     cout<<"After sorting : \n";
     obj->displayArr(arr);
+    delete obj;
     return 0;
 }

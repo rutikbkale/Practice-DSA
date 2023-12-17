@@ -64,6 +64,18 @@ public:
             cout << endl;
         }
     }
+
+    void peek(){
+       if (!top)
+        {
+            cout << "Stack is empty.\n";
+        }
+        else
+        {
+            cout<<"Peek of the stack is  : "<<top->data;
+            cout << endl;
+        } 
+    }
 };
 
 int main(int argc, char const *argv[])
@@ -71,11 +83,14 @@ int main(int argc, char const *argv[])
     Node *head = new Node(10);
     Stack *s = new Stack(head);
     s->push(20);
+    s->peek();
     s->push(30);
     s->push(40);
     s->push(50);
+    s->peek();
     s->displayStack();
     s->pop();
+    s->peek();
     s->displayStack();
     return 0;
 }

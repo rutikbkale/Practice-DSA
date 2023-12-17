@@ -29,17 +29,29 @@ public:
         }
         return -1;
     }
+
+    void array(int *arr){
+        cout<<"Array Elements : ";
+        for(int i=0; i<size; i++){
+            cout<<arr[i]<<" ";
+        }
+        cout<<endl;
+    }
 };
 
 int main(int argc, char const *argv[]) {
-    int size = 7;
+    int size = 7,ch;
     int arr[] = {12,32,45,67,90,125,664};
     Searching *s = new Searching(size);
-    int i = s->binaryS(67, arr);
+    s->array(arr);
+    cout<<"Enter element to be search : ";
+    cin>>ch;
+    int i = s->binaryS(ch, arr);
     if (i >= 0) {
         cout << "Element found at index: " << i;
     } else {
         cout << "Element not found.";
     }
+    delete s;
     return 0;
 }

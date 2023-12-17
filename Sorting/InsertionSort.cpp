@@ -10,9 +10,9 @@ public:
     Sorting(int size)
     {
         this->size = size;
-   }
+    }
 
-   void displayArr(int *arr)
+    void displayArr(int *arr)
     {
         cout << "Array Elements : ";
         for (int i = 0; i < size; i++)
@@ -24,14 +24,16 @@ public:
 
     void insertionSort(int *arr)
     {
-        for(int i=1; i<size; i++){
+        for (int i = 1; i < size; i++)
+        {
             int key = arr[i];
-            int j=i-1;
-            while(j>=0 && arr[j] > key){
-                arr[j+1]=arr[j];
+            int j = i - 1;
+            while (j >= 0 && arr[j] > key)
+            {
+                arr[j + 1] = arr[j];
                 j--;
             }
-            arr[j+1]=key;
+            arr[j + 1] = key;
         }
     }
 };
@@ -39,13 +41,14 @@ public:
 int main(int argc, char const *argv[])
 {
     int size = 10;
-    int arr[] = {54,76,34,56,87,9,12,31,45,29};
-    //int arr[] = {1, 2, 3, 4, 5,6, 7, 8, 9, 10};
+    int arr[] = {54, 76, 34, 56, 87, 9, 12, 31, 45, 29};
+    // int arr[] = {1, 2, 3, 4, 5,6, 7, 8, 9, 10};
     Sorting *obj = new Sorting(size);
-    cout<<"Before sorting : \n";
+    cout << "Before sorting : \n";
     obj->displayArr(arr);
     obj->insertionSort(arr);
-    cout<<"After sorting : \n";
+    cout << "After sorting : \n";
     obj->displayArr(arr);
+    delete obj;
     return 0;
 }

@@ -28,12 +28,11 @@ public:
     }
 
     // Insertion At Begining
-    Node *insertAtBegin(int val)
+    void insertAtBegin(int val)
     {
         Node *newNode = new Node(val);
         newNode->next = head;
         head = newNode;
-        return newNode;
     }
 
     // Insertion At Ending
@@ -65,7 +64,7 @@ public:
     }
 
     // Deleting At Begining
-    Node *deleteAtBegin()
+    void deleteAtBegin()
     {
         if (!head)
         {
@@ -77,7 +76,7 @@ public:
             head = temp->next;
             delete temp;
         }
-        return head;
+        //return head;
     }
 
     // Deleting At Ending
@@ -122,22 +121,24 @@ public:
         }
     }
 
-    //Reverse the Linkedlist
-    Node *reverseList(){
-        Node *temp=head;
-        Node *p=NULL;
-        Node *prev=NULL;
-        while(temp != NULL){
-            p=temp->next;
-            temp->next=prev;
-            prev=temp;
-            temp=p;
+    // Reverse the Linkedlist
+    void reverseList()
+    {
+        Node *temp = head;
+        Node *next = NULL;
+        Node *prev = NULL;
+        while (temp != NULL)
+        {
+            next = temp->next;
+            temp->next = prev;
+            prev = temp;
+            temp = next;
         }
-        return prev;
+        head=prev;
     }
 
     // Displaying LinkedList
-    void displayList(Node *head)
+    void displayList()
     {
         if (!head)
         {
@@ -149,10 +150,10 @@ public:
             cout << "List Elements : ";
             while (temp != NULL)
             {
-                if(temp->next != NULL)
-                cout << temp->data << " -> ";
+                if (temp->next != NULL)
+                    cout << temp->data << " -> ";
                 else
-                cout << temp->data << " ";
+                    cout << temp->data << " ";
                 temp = temp->next;
             }
             cout << endl;
@@ -165,30 +166,30 @@ int main()
     Node *head = new Node(10);
     LinkedList *list = new LinkedList(head);
     cout << "\nInsertion At Begining : \n";
-    head = list->insertAtBegin(5);
-    head = list->insertAtBegin(1);
-    list->displayList(head);
+    list->insertAtBegin(5);
+    list->insertAtBegin(1);
+    list->displayList();
     cout << "\nInsertion At Ending : \n";
     list->insertAtEnd(15);
     list->insertAtEnd(20);
-    list->displayList(head);
+    list->displayList();
     cout << "\nInsertion At Specific position : \n";
     list->insertAtIndex(12, 3);
     list->insertAtIndex(17, 5);
-    list->displayList(head);
+    list->displayList();
     cout << "\nDeletion At Begining : \n";
-    head = list->deleteAtBegin();
-    list->displayList(head);
+    list->deleteAtBegin();
+    list->displayList();
     cout << "\nDeletion At Ending : \n";
     list->deleteAtEnd();
-    list->displayList(head);
+    list->displayList();
     cout << "\nDeletion At Specific Index : \n";
     list->deleteAtIndex(2);
-    list->displayList(head);
+    list->displayList();
     cout << "\nReverse linkedlist : \n";
-    head=list->reverseList();
-    list->displayList(head);
-
-
+    list->reverseList();
+    list->displayList();
+    delete head;
+    delete list;
     return 0;
 }

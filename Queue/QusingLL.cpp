@@ -85,5 +85,7 @@ int main(int argc, char const *argv[])
     q->displayQueue();
     q->deQueue();
     q->displayQueue();
+    delete head;
+    delete q;
     return 0;
 }

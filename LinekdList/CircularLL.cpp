@@ -28,7 +28,7 @@ public:
     }
 
     // Insertion at begining
-    Node *insertAtBegin(int val)
+    void insertAtBegin(int val)
     {
         Node *newNode = new Node(val);
         Node *temp = head;
@@ -39,7 +39,6 @@ public:
         temp->next = newNode;
         newNode->next = head;
         head = newNode;
-        return head;
     }
 
     // Insertion at Ending
@@ -114,21 +113,20 @@ public:
     }
 
     // Reverse the Linkedlist
-    Node *reverseList()
+    void reverseList()
     {
         Node *temp = head;
-        Node *p = NULL;
+        Node *next = NULL;
         Node *prev = NULL;
         do
         {
-            p = temp->next;
+            next = temp->next;
             temp->next = prev;
             prev = temp;
-            temp = p;
-        }while (temp != head);
-        head->next=prev;
-        head=prev;
-        return head;
+            temp = next;
+        } while (temp != head);
+        head->next = prev;
+        head = prev;
     }
 
     // Displaying elements
@@ -138,7 +136,10 @@ public:
         cout << "List Elements : ";
         do
         {
-            cout << temp->data << " -> ";
+            if (temp->next != head)
+                cout << temp->data << " -> ";
+            else
+                cout << temp->data << "  ";
             temp = temp->next;
         } while (temp != head);
     }
@@ -152,8 +153,8 @@ int main(int argc, char const *argv[])
     second->next = head;
     LinkedList *list = new LinkedList(head);
     cout << "\nInsertion At Begining : \n";
-    head = list->insertAtBegin(5);
-    head = list->insertAtBegin(1);
+    list->insertAtBegin(5);
+    list->insertAtBegin(1);
     list->displayList();
     cout << "\nInsertion At Ending : \n";
     list->insertAtEnd(15);
@@ -173,7 +174,10 @@ int main(int argc, char const *argv[])
     list->deleteAtIndex(3);
     list->displayList();
     cout << "\nReverse linkedlist : \n";
-    head=list->reverseList();
+    list->reverseList();
     list->displayList();
+    delete head;
+    delete second;
+    delete list;
     return 0;
 }

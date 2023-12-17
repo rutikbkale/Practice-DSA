@@ -1,39 +1,51 @@
 #include <iostream>
 using namespace std;
 
-class Sorting {
+class Sorting
+{
 public:
     int size;
 
-    Sorting(int size) {
+    Sorting(int size)
+    {
         this->size = size;
     }
 
-    void displayArr(int *arr) {
+    void displayArr(int *arr)
+    {
         cout << "Array Elements: ";
-        for (int i = 0; i < size; i++) {
+        for (int i = 0; i < size; i++)
+        {
             cout << arr[i] << " ";
         }
         cout << endl;
     }
 
-    void selectionSort(int *arr) {
-        int i, j, minIndex, temp;
-        for (i = 0; i < size - 1; i++) {
-            minIndex = i;
-            for (j = i + 1; j < size; j++) {
-                if (arr[j] < arr[minIndex]) {
-                    minIndex = j;
+    void selectionSort(int *arr)
+    {
+        int i, j, min, temp;
+        for (i = 0; i < size; i++)
+        {
+            min = i;
+            for (j = i + 1; j < size; j++)
+            {
+                if (arr[j] < arr[min])
+                {
+                    min = j;
                 }
             }
-            temp = arr[minIndex];
-            arr[minIndex] = arr[i];
-            arr[i] = temp;
+            if (min != i)
+            {
+                temp = arr[min];
+                arr[min] = arr[i];
+                arr[i] = temp;
+            }
         }
     }
 };
 
-int main() {
+int main()
+{
     int size = 10;
     int arr[] = {54, 76, 34, 56, 87, 9, 12, 31, 45, 29};
     Sorting *obj = new Sorting(size);

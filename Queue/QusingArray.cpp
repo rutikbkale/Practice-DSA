@@ -25,7 +25,7 @@ public:
 
     int deQueue() {
         int a = -1;
-        if (front < rear) {
+        if (front <= rear) {
             a = arr[++front];
         } else {
             cout << "Queue is empty.\n";
@@ -34,7 +34,7 @@ public:
     }
 
     void displayQueue() {
-        if (front < rear) {
+        if (front <= rear) {
             cout << "Elements in Queue : ";
             for (int i = front + 1; i <= rear; ++i) {
                 cout << arr[i] << " ";
