@@ -20,6 +20,8 @@ public:
 class BinaryTree
 {
 public:
+    Node *root;
+    
     void inOrder(Node *root)
     {
         if (root != NULL)
@@ -49,6 +51,7 @@ public:
             cout << root->data << " ";
         }
     }
+
 };
 
 int main()

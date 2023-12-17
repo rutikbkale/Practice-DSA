@@ -122,6 +122,20 @@ public:
         }
     }
 
+    //Reverse the Linkedlist
+    Node *reverseList(){
+        Node *temp=head;
+        Node *p=NULL;
+        Node *prev=NULL;
+        while(temp != NULL){
+            p=temp->next;
+            temp->next=prev;
+            prev=temp;
+            temp=p;
+        }
+        return prev;
+    }
+
     // Displaying LinkedList
     void displayList(Node *head)
     {
@@ -146,7 +160,7 @@ public:
     }
 };
 
-int main(int argc, char const *argv[])
+int main()
 {
     Node *head = new Node(10);
     LinkedList *list = new LinkedList(head);
@@ -171,6 +185,10 @@ int main(int argc, char const *argv[])
     cout << "\nDeletion At Specific Index : \n";
     list->deleteAtIndex(2);
     list->displayList(head);
+    cout << "\nReverse linkedlist : \n";
+    head=list->reverseList();
+    list->displayList(head);
+
 
     return 0;
 }
