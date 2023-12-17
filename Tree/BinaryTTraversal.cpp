@@ -17,11 +17,6 @@ public:
     }
 };
 
-class BinaryTree
-{
-public:
-    Node *root;
-    
     void inOrder(Node *root)
     {
         if (root != NULL)
@@ -52,8 +47,6 @@ public:
         }
     }
 
-};
-
 int main()
 {
     Node *root = new Node(50);
@@ -63,14 +56,14 @@ int main()
     root->right = new Node(70);
     root->right->left = new Node(60);
     root->right->right = new Node(80);
-    BinaryTree obj;
+
     cout << "Inorder Traversal : \n";
-    obj.inOrder(root);
+    inOrder(root);
     cout << endl;
     cout << "Preorder Traversal : \n";
-    obj.preOrder(root);
+    preOrder(root);
     cout << endl;
     cout << "Postorder Traversal : \n";
-    obj.postOrder(root);
+    postOrder(root);
     return 0;
 }

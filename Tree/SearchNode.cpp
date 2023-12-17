@@ -16,8 +16,16 @@ class Node {
     }
 };
 
+void displayInorder(Node* root) {
+    if (root != NULL) {
+        displayInorder(root->left);
+        cout << root->data << " ";
+        displayInorder(root->right);
+    }
+}
+
 Node *serchingNode(Node *root, int val){
-    if(root->data==val || root==NULL){
+    if(root==NULL || root->data==val){
         return root;
     }
     else if(root->data > val){
@@ -37,7 +45,8 @@ int main(int argc, char const *argv[])
     root->right = new Node(70);
     root->right->left = new Node(60);
     root->right->right = new Node(80);
-
+    displayInorder(root);
+    cout<<endl;
     int val;
     cout<<"Enter the Node To be search : ";
     cin>>val;
