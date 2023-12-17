@@ -17,6 +17,16 @@ public:
     }
 };
 
+Node *insertNode(Node *root,int val){
+if(root==NULL)
+return new Node(val);
+if(root->data < val)
+root->right=insertNode (root->right,val);
+else
+root->left=insertNode (root->left,val);
+return root;
+}
+
     void inOrder(Node *root)
     {
         if (root != NULL)
@@ -49,13 +59,14 @@ public:
 
 int main()
 {
-    Node *root = new Node(50);
-    root->left = new Node(30);
-    root->left->left = new Node(20);
-    root->left->right = new Node(40);
-    root->right = new Node(70);
-    root->right->left = new Node(60);
-    root->right->right = new Node(80);
+    Node *root =  NULL;
+root=insertNode (root,5);
+insertNode (root,2);
+insertNode (root,4);
+insertNode (root,3);
+insertNode (root,6);
+insertNode (root,7);
+insertNode (root,8);
 
     cout << "Inorder Traversal : \n";
     inOrder(root);
